@@ -1,9 +1,26 @@
-<h1>All Restaurants</h1>
+<nav class="navbar navbar-light bg-white">
+  <span class="navbar-brand mb-0 h1">All Restaurants</span>
+  <%= link_to "Create a new restaurant", new_restaurant_path, class: "btn btn-primary" %>
 
-<% @restaurants.each do |r| %>
-  <%= link_to r.name, restaurant_path(r) %>
-  <br>
-<% end %>
+</nav>
 
-<br>
-<%= link_to "Create a new restaurant", new_restaurant_path %>
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <% @restaurants.each do |r| %>
+      <div class="col-xs-12 col-sm-6 col-md-3 mt-3">
+        <div class="card">
+          <img class="card-img-top" src="https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to r.name, restaurant_path(r) %></h5>
+            <p class="card-text">Reviews - <%= r.reviews.length %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

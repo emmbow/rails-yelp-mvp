@@ -1,13 +1,32 @@
+<%= link_to "Back", restaurants_path, class: "btn btn-primary" %>
+
+
 <h1><%= @restaurant.name %></h1>
 
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.category %></p>
-<p><%= @restaurant.phone_number %></p>
+<p>Address: <%= @restaurant.address %></p>
+<p>Type: <%= @restaurant.category %></p>
+<p>Contact: <%= @restaurant.phone_number %></p>
 
-<ul>
-  <% @restaurant.reviews.each do |rev| %>
-    <p><%= rev.content %> - <%= rev.rating %></p>
-  <% end %>
-</ul>
 
-<%= link_to "Back", restaurants_path %>
+<h2>Reviews:</h2>
+<div class="card" >
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <% @restaurant.reviews.each do |rev| %>
+        <p><%= rev.content %> - <%= rev.rating %></p>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+
+
+<br>
+<p>Leave a review</p>
+<%= render 'reviews/form' %>
+
+
+
+
+ <!-- link_to "Add a review", new_restaurant_review_path(@restaurant) -->
+
